@@ -10,8 +10,11 @@ import com.bumptech.glide.Glide
 import com.example.authapp.R
 import com.example.authapp.data.model.User
 
-class UserAdapter(private val userList: List<User>) :
-    RecyclerView.Adapter<UserAdapter.ViewHolder>() {
+class UserAdapter(private var userList: MutableList<User>) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    private val VIEW_TYPE_ITEM = 0
+    private val VIEW_TYPE_LOADING = 1
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textViewName: TextView = itemView.findViewById(R.id.textViewName)
@@ -30,16 +33,52 @@ class UserAdapter(private val userList: List<User>) :
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.user_item, parent, false)
-        return ViewHolder(view)
+    class LoadingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return if (viewType == VIEW_TYPE_ITEM) {
+            val view =
+                LayoutInflater.from(parent.context).inflate(R.layout.user_item, parent, false)
+            ViewHolder(view)
+        } else {
+            val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.loading_item, parent, false)
+            LoadingViewHolder(view)
+        }
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(userList[position])
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (holder is ViewHolder) {
+            holder.bind(userList[position])
+        } else if (holder is LoadingViewHolder) {
+            // Tampilkan loading indicator jika diperlukan
+        }
     }
 
     override fun getItemCount(): Int {
         return userList.size
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (userList[position].id != -1) VIEW_TYPE_ITEM else VIEW_TYPE_LOADING
+    }
+
+    fun updateList(newList: List<User>) {
+        hideLoading()
+        userList.addAll(newList)
+        notifyDataSetChanged()
+    }
+
+    fun showLoading() {
+        userList.add(User(-1, "", "", "", ""))
+        notifyItemInserted(userList.size - 1)
+    }
+
+    fun hideLoading() {
+        val lastPosition = userList.size - 1
+        if (lastPosition >= 0 && userList[lastPosition].id == -1) {
+            userList.removeAt(lastPosition)
+            notifyItemRemoved(lastPosition)
+        }
     }
 }
