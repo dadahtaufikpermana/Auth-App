@@ -7,12 +7,20 @@
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.authapp.presentation.fragment.SplashFragment"
-        android:label="SplashFragment"/>
+        android:label="SplashFragment">
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 
     <activity
         android:id="@+id/mainActivity"
         android:name="com.example.authapp.presentation.activity.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.authapp.presentation.fragment.LoginFragment"
+        android:label="LoginFragment" />
 
 </navigation>

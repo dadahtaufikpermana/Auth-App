@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Auth App</string>
     <string name="welcome_to_auth_app">Welcome to Auth App</string>
+    <string name="login_text">Login</string>
+    <string name="email">Email Address</string>
+    <string name="password">Password</string>
+    <string name="term">By signing in you are agreeing \nour Term and privacy policy</string>
 </resources>
