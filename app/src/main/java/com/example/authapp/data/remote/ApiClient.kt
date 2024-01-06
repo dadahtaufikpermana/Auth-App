@@ -13,4 +13,8 @@ object ApiClient {
         .build()
 
     fun getApiService(): ApiService = retrofit.create(ApiService::class.java)
+
+    fun create(): ApiService {
+        return retrofit.create(ApiService::class.java)
+    }
 }
