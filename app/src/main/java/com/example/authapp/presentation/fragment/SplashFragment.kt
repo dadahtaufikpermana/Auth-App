@@ -3,14 +3,11 @@ package com.example.authapp.presentation.fragment
 import android.content.Context
 import android.net.ConnectivityManager
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -40,7 +37,7 @@ class SplashFragment : Fragment() {
         // Pengecekan koneksi internet
         if (isNetworkAvailable()) {
             viewModel.handleSplashScreen {
-//                findNavController().navigate(R.id.)
+                findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
             }
         } else {
             showSnackbar("No internet access, please check")
