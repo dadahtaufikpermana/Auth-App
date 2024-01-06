@@ -5,4 +5,5 @@
     <string name="email">Email Address</string>
     <string name="password">Password</string>
     <string name="term">By signing in you are agreeing \nour Term and privacy policy</string>
+    <string name="home">Home</string>
 </resources>
