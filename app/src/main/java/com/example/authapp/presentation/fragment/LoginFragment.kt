@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.authapp.R
 import com.example.authapp.data.Repository.LoginRepositoryImpl
 import com.example.authapp.utils.SnackbarUtils
@@ -55,6 +56,7 @@ class LoginFragment : Fragment() {
                 val isSuccess = result.data
                 if (isSuccess) {
                     SnackbarUtils.showSuccessSnackbar(requireView(), "Login success")
+                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                 } else {
                     SnackbarUtils.showErrorSnackbar(requireView(), "Login failed")
                 }
