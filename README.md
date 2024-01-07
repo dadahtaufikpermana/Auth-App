@@ -24,12 +24,14 @@ The Auth App is an authentication login project that utilizes the API from https
 ## Installation
 
 1. Clone this repository into Android Studio or your preferred Kotlin IDE.
-2. Run the application on an emulator or a physical device that has been set up.
+2. Sync the project to download the required libraries and dependencies. Ensure that the project's Gradle files are synced successfully.
+3. Run the application on an emulator or a physical device that has been set up.
 
 ## Application Screenshots
+
 ![splash_screen](https://github.com/dadahtaufikpermana/Auth-App/assets/108538497/34f77823-8a95-4d09-a2d4-f765a39662bc)
 ![home_screen](https://github.com/dadahtaufikpermana/Auth-App/assets/108538497/7547c0cf-8c83-4b4b-b93b-20374247a7e2)
 ![login_screen](https://github.com/dadahtaufikpermana/Auth-App/assets/108538497/5c78c675-a443-4eb1-82ae-c3c9bc5b9ac6)
-![User List Screen](https://github.com/dadahtaufikpermana/Auth-App/assets/108538497/7547c0cf-8c83-4b4b-b93b-20374247a7e2)
+![list_user_screen](https://github.com/dadahtaufikpermana/Auth-App/assets/108538497/1fdf548e-e3ba-42ad-a1b4-f99680e61906)
 
 ---
